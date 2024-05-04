@@ -1,0 +1,68 @@
+<meta content="Nexarcade" property="og:title" />
+<meta content="The Arcade of the Future." property="og:description" />
+<meta content="https://embed.com/this-is-the-site-url" property="og:url" />
+<meta content="https://embed.com/embedimage.png" property="og:image" />
+<meta content="#4cb4dd" data-react-helmet="true" name="theme-color" />
+
+<meta name="robots" content="noindex">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexarcade</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
+</head>
+<body style="background-color: #022e3f;">
+    <div class="header">
+        <img alt="tag" src="/assets/card.png" height="100">
+    </div>
+    <div style="left: 50%; text-align: center;" class="container"></div>
+    <a class="copyright" onclick="window.open('https://github.com/Nexarcade/nexarcade.github.io')" href="https://docs.github.com/en/site-policy/content-removal-policies/guide-to-submitting-a-dmca-takedown-notice">DMCA</a>
+    <div class="background" id="background"></div>
+</body>
+</html>
+
+<style>
+    div.header {
+        background-color: rgba(128, 128, 128, 0.123);
+        text-align: center;
+        display: block;
+        font-size: xx-large;
+        width: "100%";
+        margin: 20px;
+        padding:5px; 
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+    a.copyright {
+        font-size: x-large;
+        left: 50%;
+        display: block;
+        position: absolute;
+        bottom:auto; 
+        text-align: center;
+        width: "100%";
+    }
+    .background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #022e3f; 
+        z-index: -1; 
+    }
+    .gameButton{
+        transition: all 0.3s ease;  
+    }
+    .gameButton:hover {
+        
+        transform: rotate(-0.025turn) scale(1.2);
+    }
+</style>
+<script type="text/javascript" src="js/particle/particles.min.js"></script>
+<script type="text/javascript" src="js/particle/config.js"></script>
+<script type="text/javascript" src="script.js"></script>
