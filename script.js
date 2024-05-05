@@ -6,16 +6,31 @@ async function getGames() {
     return data;
 }
 
-function makeButton(gameName) {
+async function getGameDistributionGames() {
+
+    var hugelist = []
+
+    for (let i = 1; i <= 5; i++) {
+        const response = await fetch(`/gdlists/${i.toString()}.json`);
+        const data = await response.json();
+        let ii = 0;
+        while (ii < data.length) {
+            hugelist.push(data[ii])
+            ii++;
+        }
+    }
+
+    return hugelist;
+}
+
+function makeButton(gameName, icon, path) {
 
     if (gameName.search("__DEV__") != -1 && prod != 'dev'){
         return
     }
 
-    gameName = gameName.replace('__DEV__', '')
-
     const newButton = document.createElement("a");
-    newButton.href = `play.html?game=${gameName}`;
+    newButton.href = path;
     newButton.style.borderRadius = "30%";
     
     const img = document.createElement("img");
@@ -23,7 +38,7 @@ function makeButton(gameName) {
     img.style.border = "20px solid transparent"
     img.alt = gameName;
     img.style.borderRadius = "30%";
-    img.src = "/games/" + gameName + "/icon";
+    img.src = icon;
     img.width = 100;
     img.height = 100;
     
@@ -32,5 +47,18 @@ function makeButton(gameName) {
 }
 
 getGames().then(gameNames => {
-    gameNames.forEach(gameName => makeButton(gameName));
+    gameNames.forEach(
+        gameName => function(){
+            gameName = gameName.replace('__DEV__', '')
+            makeButton(gameName, `/games/${gameName}/icon`, `play.html?game=${gameName}`)
+        }()
+    )
+});
+
+getGameDistributionGames().then(gameDatas => {
+    gameDatas.forEach(
+        gameData => function(){
+            makeButton(gameData["Title"], gameData["Asset"][0], `play.html?game=gdiframe&md5=${gameData['Md5']}`)
+        }()
+    )
 });
