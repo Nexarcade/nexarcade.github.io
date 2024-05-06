@@ -49,8 +49,8 @@ function makeButton(gameName, icon, path) {
 getGames().then(gameNames => {
     gameNames.forEach(
         gameName => function(){
-            gameName = gameName.replace('__DEV__', '')
-            makeButton(gameName, `/games/${gameName}/icon`, `play.html?game=${gameName}`)
+            gameNameForPath = gameName.replace('__DEV__', '')
+            makeButton(gameName, `/games/${gameNameForPath}/icon`, `play.html?game=${gameNameForPath}`)
         }()
     )
 });
