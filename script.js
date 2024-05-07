@@ -50,7 +50,7 @@ getGames().then(gameNames => {
     gameNames.forEach(
         gameName => function(){
             gameNameForPath = gameName.replace('__DEV__', '')
-            makeButton(gameName, `/games/${gameNameForPath}/icon`, `play.html?game=${gameNameForPath}`)
+            makeButton(gameName, `/games/${gameNameForPath}/icon`, `play.html?game=${gameNameForPath}&icon=/games/${gameNameForPath}/icon`)
         }()
     )
 });
@@ -58,7 +58,7 @@ getGames().then(gameNames => {
 getGameDistributionGames().then(gameDatas => {
     gameDatas.forEach(
         gameData => function(){
-            makeButton(gameData["Title"], gameData["Asset"][0], `play.html?game=gdiframe&md5=${gameData['Md5']}`)
+            makeButton(gameData["Title"], gameData["Asset"][0], `play.html?game=gdiframe&md5=${gameData['Md5']}&icon=${gameData["Asset"][0]}`)
         }()
     )
 });
